@@ -1,0 +1,6 @@
+# Ignore workspace settings
+.vscode/**/*
+
+# Keep this for future reference.
+# Track launch.json only.
+# !.vscode/launch.json
