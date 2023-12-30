@@ -26,7 +26,6 @@ public class IMClient {
         if (file.exists() && file.canRead()) {
             configReader = new Scanner(file);
         } else {
-            System.out.println("CURRENT LOC: " + new File(".").getAbsolutePath());
             System.out.println("Unable to locate config.txt. Exiting.");
             System.exit(1);
             return;
