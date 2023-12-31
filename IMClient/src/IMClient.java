@@ -12,12 +12,14 @@
 import java.io.*;
 import java.util.*;
 import java.net.*;
+import java.util.logging.Logger;
 
 public class IMClient {
     private static String username;                        // Username associated with this client.
     private static boolean isMsgThreadRunning = false;    // True if the user has logged in.
     private static String prompt;                        // Sets the text for the command prompt.
     private static boolean firstRun = true;
+    private final static Logger logger = Logger.getLogger(IMClient.class.getCanonicalName());
 
     public static void main(String[] args) throws IOException {
         // Read the configuration file for IP Address and Port information.
@@ -65,10 +67,10 @@ public class IMClient {
             out = new PrintWriter(mySocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
         } catch (UnknownHostException e) {
-            System.err.println("Could not find host" + config[0]);
+            logger.severe("Could not find host" + config[0]);
             System.exit(1);
         } catch (IOException e) {
-            System.err.println("I/O exception with " + config[0]);
+            logger.severe("I/O exception with " + config[0]);
             System.exit(1);
         }
 
@@ -157,7 +159,7 @@ public class IMClient {
                     System.out.println("Friend added.");
                 } else {
                     // Handle erroneous messages here.
-                    System.out.println("Received invalid command from server.");
+                    logger.warning("Received invalid command from server: " + fromServer);
                 }
 
                 if (!firstRun) {
