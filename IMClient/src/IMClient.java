@@ -34,8 +34,8 @@ public class IMClient {
         }
         // Print the menu and get user selection
         int userChoice = getUserMenuSelection();
-        String msgContent = "";
-        String msgPrefix = "";
+        String msgContent;
+        String msgPrefix;
         String[] config = new String[2];
         int count = 0;
 
